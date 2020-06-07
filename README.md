@@ -1,6 +1,9 @@
 # Cliente
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
+Firebase 7.15.0
+@angular/fire 6.0.0
+angular-bootstrap-md ^9.3.1
 
 ## Development server
 
