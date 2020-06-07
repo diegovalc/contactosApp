@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "contacto-app-6895a": {
+      "hosting": {
+        "cliente": [
+          "contacto-app-6895a"
+        ]
+      }
+    }
+  }
+}

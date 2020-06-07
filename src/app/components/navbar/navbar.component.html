@@ -1,0 +1,41 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark info-color-dark fixed-top" [containerInside]="false">
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" href="#"><mdb-icon far icon="address-book"></mdb-icon> Agenda de Contactos</a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links>
+  
+      <!-- Links -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link waves-light" routerLink="users/login" mdbWavesEffect><mdb-icon fas icon="sign-in-alt"></mdb-icon> Iniciar Sesion</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link waves-light" routerLink="users/register" mdbWavesEffect><mdb-icon fas icon="user-check"></mdb-icon> Registrarse</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="user-plus"></mdb-icon> Nuevo<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="address-card"></mdb-icon> Contactos</a>
+        </li>
+  
+        <!-- Dropdown -->
+        <li class="nav-item dropdown" dropdown>
+          <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
+            <mdb-icon fas icon="user"></mdb-icon> Perfil<span class="caret"></span></a>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Mi Cuenta</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Cerrar Sesion</a>
+          </div>
+        </li>
+  
+      </ul>
+      <!-- Links -->
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->
