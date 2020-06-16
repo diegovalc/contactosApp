@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 //mdboostrap module
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -14,6 +16,17 @@ import { HomeComponent } from './components/home/home.component';
 import { ContactosComponent } from './components/contactos/contactos.component';
 import { Page404Component } from './components/page404/page404.component';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { environment } from '../environments/environment';
+
+//Modulo de alerts
+import { ToastrModule } from 'ngx-toastr';
+//Modulo del spinner
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { NuevoComponent } from './components/nuevo/nuevo.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,12 +36,23 @@ import { Page404Component } from './components/page404/page404.component';
     ProfileComponent,
     HomeComponent,
     ContactosComponent,
-    Page404Component
+    Page404Component,
+    NuevoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
+    BrowserAnimationsModule, // required animations module
+    NgxSpinnerModule,
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-full-width',
+      timeOut: 4000,
+      closeButton: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

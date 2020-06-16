@@ -1,5 +1,10 @@
+img{
+    width: 35px;
+}
+
 @media (max-width: 320px) {
     .navbar-brand{
         font-size: 17px;
     }
 }
+

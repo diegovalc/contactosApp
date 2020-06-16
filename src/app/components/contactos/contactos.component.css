@@ -1,0 +1,13 @@
+#contactos{
+    background: url('/assets/fondo2.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;  
+    background-attachment: fixed; 
+    width: auto;
+} 
+
+.container{
+    margin-top: 56px;
+    padding-top: 15px;
+}

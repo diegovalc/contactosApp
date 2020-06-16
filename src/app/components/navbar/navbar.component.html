@@ -9,26 +9,29 @@
   
       <!-- Links -->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!isLogged">
             <a class="nav-link waves-light" routerLink="users/login" mdbWavesEffect><mdb-icon fas icon="sign-in-alt"></mdb-icon> Iniciar Sesion</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link waves-light" routerLink="users/register" mdbWavesEffect><mdb-icon fas icon="user-check"></mdb-icon> Registrarse</a>
+        <li class="nav-item" *ngIf="!isLogged">
+          <a class="nav-link waves-light" routerLink="users/register" mdbWavesEffect><mdb-icon fas icon="user-check"></mdb-icon> Registrarse</a>
         </li>
-        <li class="nav-item active">
-          <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="user-plus"></mdb-icon> Nuevo<span class="sr-only">(current)</span></a>
+        <li class="nav-item active" *ngIf="isLogged">
+          <a class="nav-link waves-light" routerLink="nuevo" mdbWavesEffect><mdb-icon fas icon="user-plus"></mdb-icon> Nuevo<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link waves-light" mdbWavesEffect><mdb-icon fas icon="address-card"></mdb-icon> Contactos</a>
+        <li class="nav-item" *ngIf="isLogged">
+          <a class="nav-link waves-light" routerLink="contactos" mdbWavesEffect><mdb-icon fas icon="address-card"></mdb-icon> Contactos</a>
+        </li>
+        <li class="nav-item" *ngIf="isLogged && fotoUsuario">
+          <img src="{{fotoUsuario}}" alt="" class="img-fluid rounded-circle z-depth-0">
         </li>
   
         <!-- Dropdown -->
-        <li class="nav-item dropdown" dropdown>
+        <li class="nav-item dropdown" dropdown *ngIf="isLogged">
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            <mdb-icon fas icon="user"></mdb-icon> Perfil<span class="caret"></span></a>
+            <mdb-icon fas icon="user" *ngIf="!fotoUsuario"></mdb-icon> {{nombreUsuario}}<span class="caret"></span></a>
           <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
             <a class="dropdown-item waves-light" mdbWavesEffect href="#">Mi Cuenta</a>
-            <a class="dropdown-item waves-light" mdbWavesEffect href="#">Cerrar Sesion</a>
+            <a class="dropdown-item waves-light" mdbWavesEffect href="#"  (click)="onLogOut()">Cerrar Sesion</a>
           </div>
         </li>
   
