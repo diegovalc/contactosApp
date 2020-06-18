@@ -4,10 +4,26 @@
     background-repeat: no-repeat;
     background-size: cover;  
     background-attachment: fixed; 
-    width: auto;
+    width: 100%;
+    height: 100vh;
 } 
 
 .container{
     margin-top: 56px;
     padding-top: 15px;
+}
+
+.caja-busqueda{
+    background-color:rgb(255, 255, 255);
+    border-radius: 15px;
+    position: fixed;
+    z-index: 10;
+    box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.48);
+}
+
+.cards-contactos{
+    margin-top: 70px;
+}
+.search-input{
+    height: 50px;
 }

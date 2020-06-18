@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  API_URI: 'http://localhost:3000/api',
   firebaseConfig: {
     apiKey: "AIzaSyCmFXMX3aLMHzCr4wv7LCu1DooY8Zt20Aw",
     authDomain: "contacto-app-6895a.firebaseapp.com",
@@ -13,6 +14,7 @@ export const environment = {
     messagingSenderId: "43084496733",
     appId: "1:43084496733:web:2cf43efcdb9fc7a05eb2b4"
   }
+  
 };
 
 /*

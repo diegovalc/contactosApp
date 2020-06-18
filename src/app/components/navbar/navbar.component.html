@@ -21,14 +21,14 @@
         <li class="nav-item" *ngIf="isLogged">
           <a class="nav-link waves-light" routerLink="contactos" mdbWavesEffect><mdb-icon fas icon="address-card"></mdb-icon> Contactos</a>
         </li>
-        <li class="nav-item" *ngIf="isLogged && fotoUsuario">
-          <img src="{{fotoUsuario}}" alt="" class="img-fluid rounded-circle z-depth-0">
+        <li class="nav-item" *ngIf="isLogged && usuario.photoURL">
+          <img src="{{usuario.photoURL}}" alt="" class="img-fluid rounded-circle z-depth-0">
         </li>
   
         <!-- Dropdown -->
         <li class="nav-item dropdown" dropdown *ngIf="isLogged">
           <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
-            <mdb-icon fas icon="user" *ngIf="!fotoUsuario"></mdb-icon> {{nombreUsuario}}<span class="caret"></span></a>
+            <mdb-icon fas icon="user" *ngIf="!usuario.photoURL"></mdb-icon> {{usuario.displayName}}<span class="caret"></span></a>
           <div *dropdownMenu class="dropdown-menu dropdown-menu-right dropdown dropdown-primary" role="menu">
             <a class="dropdown-item waves-light" mdbWavesEffect href="#">Mi Cuenta</a>
             <a class="dropdown-item waves-light" mdbWavesEffect href="#"  (click)="onLogOut()">Cerrar Sesion</a>

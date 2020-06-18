@@ -1,96 +1,162 @@
 <section id="register">
-    <div class="container">
-        <div class="row">
-            <div class="col-xs-12 col-sm-6 col-md-6 mx-auto">
-                <mdb-card>
-                    <!--Card content-->
-                    <mdb-card-body>
-                        <!--Title-->
-                        <mdb-card-title>
-                            <h4>Registro</h4>
-                        </mdb-card-title>
-                        <hr>
-                        <!--Text-->
-                        <mdb-card-text>
-                            <!-- Default form register -->
-                            <form class="text-center" [formGroup]="registerForm">
-                                <div class="form-row">
-                                    <div class="col">
-                                        <!-- First name -->
-                                        <div class="md-form">
-                                            <input mdbInput mdbValidate type="text" id="nombres" class="form-control" formControlName="nombres">
-                                            <label for="nombres">Nombres</label>
-                                            <!-- Campo de validaciones-->
-                                            <div *ngIf="registerForm.get('nombres').invalid && (registerForm.get('nombres').dirty || registerForm.get('nombres').touched)">
-                                                <mdb-error *ngIf="registerForm.get('nombres').errors.required">Campo obligatorio</mdb-error>
-                                            </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div class="col">
-                                        <!-- Last name -->
-                                        <div class="md-form">
-                                            <input mdbInput mdbValidate type="text" id="apellidos" class="form-control" formControlName="apellidos">
-                                            <label for="apellidos">Apellidos</label>
-                                            <!-- Campo de validaciones-->
-                                            <div *ngIf="registerForm.get('apellidos').invalid && (registerForm.get('apellidos').dirty || registerForm.get('apellidos').touched)">
-                                                <mdb-error *ngIf="registerForm.get('apellidos').errors.required">Campo obligatorio</mdb-error>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-    
-                                <!-- E-mail -->
-                                <div class="md-form">
-                                    <input mdbInput mdbValidate type="email" id="email" class="form-control" formControlName="email">
-                                    <label for="email">E-mail</label>
-                                    <!-- Campo de validaciones-->
-                                    <div *ngIf="registerForm.get('email').invalid && (registerForm.get('email').dirty || registerForm.get('email').touched)">
-                                        <mdb-error *ngIf="registerForm.get('email').errors.required">Campo obligatorio</mdb-error>
-                                        <mdb-error *ngIf="registerForm.get('email').errors.email">Debe ser un correo valido</mdb-error>
-                                    </div>
-                                </div>
-                                
-    
-                                <!-- Password -->
-                                
-                                <div class="md-form">
-                                    <input mdbInput mdbValidate type="password" id="password" class="form-control" formControlName="password">
-                                    <label for="password">Password</label>
-                                    <!-- Campo de validaciones-->
-                                    <div *ngIf="registerForm.get('password').invalid && (registerForm.get('password').dirty || registerForm.get('password').touched)">
-                                        <mdb-error *ngIf="registerForm.get('password').errors.required">Campo obligatorio</mdb-error>
-                                        <mdb-error *ngIf="registerForm.get('password').errors.minlength">La contraseña debe tener al menos 6 caracteres</mdb-error>
-                                    </div>
-                                    
-                                    
-                                </div>
-    
-                                <!-- Sign up button -->
-                                <button mdbBtn color="info" block="true" class="my-4" [disabled]="registerForm.invalid" (click)="onRegister()">
-                                    Registrar
-                                </button>
-    
-                                <!-- Social register -->
-                                <p>o registrarse con:</p>
-    
-                                <a type="button" class="blue-text mx-2">
-                                    <mdb-icon fab icon="facebook"></mdb-icon>
-                                </a>
-                                <a type="button" class="deep-orange-text mx-2">
-                                    <mdb-icon fab icon="google"></mdb-icon>
-                                </a>
-    
-                                
-                            </form>
-                            <!-- Default form register -->
-                        </mdb-card-text>
-    
-                    </mdb-card-body>
-                </mdb-card>
-            </div>
-        </div>
-        
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-6 col-md-6 mx-auto">
+        <mdb-card>
+          <!--Card content-->
+          <mdb-card-body>
+            <!--Title-->
+            <mdb-card-title>
+              <h4>Registro</h4>
+            </mdb-card-title>
+            <hr />
+            <!--Text-->
+            <mdb-card-text>
+              <!-- Default form register -->
+              <form class="text-center" [formGroup]="registerForm">
+                <div class="form-row">
+                  <div class="col">
+                    <!-- First name -->
+                    <div class="md-form">
+                      <input
+                        mdbInput
+                        mdbValidate
+                        type="text"
+                        id="nombres"
+                        class="form-control"
+                        formControlName="nombres"
+                      />
+                      <label for="nombres">Nombres</label>
+                      <!-- Campo de validaciones-->
+                      <div
+                        *ngIf="
+                          registerForm.get('nombres').invalid &&
+                          (registerForm.get('nombres').dirty ||
+                            registerForm.get('nombres').touched)
+                        "
+                      >
+                        <mdb-error
+                          *ngIf="registerForm.get('nombres').errors.required"
+                          >Campo obligatorio</mdb-error
+                        >
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <!-- Last name -->
+                    <div class="md-form">
+                      <input
+                        mdbInput
+                        mdbValidate
+                        type="text"
+                        id="apellidos"
+                        class="form-control"
+                        formControlName="apellidos"
+                      />
+                      <label for="apellidos">Apellidos</label>
+                      <!-- Campo de validaciones-->
+                      <div
+                        *ngIf="
+                          registerForm.get('apellidos').invalid &&
+                          (registerForm.get('apellidos').dirty ||
+                            registerForm.get('apellidos').touched)
+                        "
+                      >
+                        <mdb-error
+                          *ngIf="registerForm.get('apellidos').errors.required"
+                          >Campo obligatorio</mdb-error
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- E-mail -->
+                <div class="md-form">
+                  <input
+                    mdbInput
+                    mdbValidate
+                    type="email"
+                    id="email"
+                    class="form-control"
+                    formControlName="email"
+                  />
+                  <label for="email">E-mail</label>
+                  <!-- Campo de validaciones-->
+                  <div
+                    *ngIf="
+                      registerForm.get('email').invalid &&
+                      (registerForm.get('email').dirty ||
+                        registerForm.get('email').touched)
+                    "
+                  >
+                    <mdb-error *ngIf="registerForm.get('email').errors.required"
+                      >Campo obligatorio</mdb-error
+                    >
+                    <mdb-error *ngIf="registerForm.get('email').errors.email"
+                      >Debe ser un correo valido</mdb-error
+                    >
+                  </div>
+                </div>
+
+                <!-- Password -->
+
+                <div class="md-form">
+                  <input
+                    mdbInput
+                    mdbValidate
+                    type="password"
+                    id="password"
+                    class="form-control"
+                    formControlName="password"
+                  />
+                  <label for="password">Password</label>
+                  <!-- Campo de validaciones-->
+                  <div
+                    *ngIf="
+                      registerForm.get('password').invalid &&
+                      (registerForm.get('password').dirty ||
+                        registerForm.get('password').touched)
+                    "
+                  >
+                    <mdb-error
+                      *ngIf="registerForm.get('password').errors.required"
+                      >Campo obligatorio</mdb-error
+                    >
+                    <mdb-error
+                      *ngIf="registerForm.get('password').errors.minlength"
+                      >La contraseña debe tener al menos 6 caracteres</mdb-error
+                    >
+                  </div>
+                </div>
+
+                <!-- Sign up button -->
+                <button
+                  mdbBtn
+                  color="info"
+                  block="true"
+                  class="my-4"
+                  [disabled]="registerForm.invalid"
+                  (click)="onRegister()"
+                >
+                  Registrar
+                </button>
+
+                <!-- Social register -->
+                <p>o registrarse con:</p>
+
+                <a type="button" class="blue-text mx-2">
+                  <mdb-icon fab icon="facebook"></mdb-icon>
+                </a>
+                <a type="button" class="deep-orange-text mx-2">
+                  <mdb-icon fab icon="google"></mdb-icon>
+                </a>
+              </form>
+              <!-- Default form register -->
+            </mdb-card-text>
+          </mdb-card-body>
+        </mdb-card>
+      </div>
     </div>
-    
+  </div>
 </section>

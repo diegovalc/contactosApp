@@ -1,1 +1,105 @@
-<p>nuevo works!</p>
+<section id="nuevo">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-10 col-md-10 mx-auto">
+                <mdb-card>
+                    <!--Card content-->
+                    <mdb-card-body>
+                        <!--Title-->
+                        <mdb-card-title>
+                            <h4>Nuevo Contacto</h4>
+                        </mdb-card-title>
+                        <hr />
+                        <!--Text-->
+                        <mdb-card-text>
+                            <!-- Default form register -->
+                            <form class="text-center" [formGroup]="nuevoContactoForm">
+                                <div class="form-row">
+                                    <div class="col">
+                                        <!-- First name -->
+                                        <div class="md-form">
+                                            <input mdbInput mdbValidate type="text" id="nombres" class="form-control"
+                                                formControlName="nombres" />
+                                            <label for="nombres">Nombres</label>
+                                            <!-- Campo de validaciones-->
+                                            <div *ngIf="
+                                nuevoContactoForm.get('nombres').invalid &&
+                                (nuevoContactoForm.get('nombres').dirty ||
+                                  nuevoContactoForm.get('nombres').touched)
+                              ">
+                                                <mdb-error *ngIf="nuevoContactoForm.get('nombres').errors.required">
+                                                    Campo obligatorio</mdb-error>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <!-- Last name -->
+                                        <div class="md-form">
+                                            <input mdbInput mdbValidate type="text" id="apellidos" class="form-control"
+                                                formControlName="apellidos" />
+                                            <label for="apellidos">Apellidos</label>
+                                            <!-- Campo de validaciones-->
+                                            <div *ngIf="
+                              nuevoContactoForm.get('apellidos').invalid &&
+                                (nuevoContactoForm.get('apellidos').dirty ||
+                                  nuevoContactoForm.get('apellidos').touched)
+                              ">
+                                                <mdb-error *ngIf="nuevoContactoForm.get('apellidos').errors.required">
+                                                    Campo obligatorio</mdb-error>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- E-mail -->
+                                <div class="md-form">
+                                    <input mdbInput mdbValidate type="email" id="email" class="form-control"
+                                        formControlName="email" />
+                                    <label for="email">E-mail</label>
+                                    <!-- Campo de validaciones-->
+                                    <div *ngIf="
+                            nuevoContactoForm.get('email').invalid &&
+                            (nuevoContactoForm.get('email').dirty ||
+                              nuevoContactoForm.get('email').touched)
+                          ">
+                                        <mdb-error *ngIf="nuevoContactoForm.get('email').errors.required">Campo
+                                            obligatorio</mdb-error>
+                                        <mdb-error *ngIf="nuevoContactoForm.get('email').errors.email">Debe ser un
+                                            correo valido</mdb-error>
+                                    </div>
+                                </div>
+
+                                <!-- Password -->
+
+                                <div class="md-form">
+                                    <input mdbInput mdbValidate type="password" id="password" class="form-control"
+                                        formControlName="password" />
+                                    <label for="password">Password</label>
+                                    <!-- Campo de validaciones-->
+                                    <div *ngIf="
+                          nuevoContactoForm.get('password').invalid &&
+                            (nuevoContactoForm.get('password').dirty ||
+                              nuevoContactoForm.get('password').touched)
+                          ">
+                                        <mdb-error *ngIf="nuevoContactoForm.get('password').errors.required">Campo
+                                            obligatorio</mdb-error>
+                                        <mdb-error *ngIf="nuevoContactoForm.get('password').errors.minlength">La
+                                            contraseña debe tener al menos 6 caracteres</mdb-error>
+                                    </div>
+                                </div>
+
+                                <!-- Sign up button -->
+                                <button mdbBtn color="info" block="true" class="my-4"
+                                    [disabled]="nuevoContactoForm.invalid" (click)="onNuevo()">
+                                    Aceptar
+                                </button>
+
+                            </form>
+                            <!-- Default form register -->
+                        </mdb-card-text>
+                    </mdb-card-body>
+                </mdb-card>
+            </div>
+        </div>
+    </div>
+</section>

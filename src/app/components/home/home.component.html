@@ -1,7 +1,9 @@
 <section id="home">
     <h1 class="mb-2">Agenda de Contactos</h1>
     <p>Guarde sus contactos en la nube</p>
-    <button type="button" mdbBtn color="info" routerLink="users/register" mdbWavesEffect>Registrarse</button>
-    <button type="button" mdbBtn color="success" (click)="mostrarAlert()" mdbWavesEffect>SweetAlert</button>
+    <div class="botones">
+        <button type="button" mdbBtn gradient="blue" rounded="true" routerLink="users/register" mdbWavesEffect>Registrarse</button>
+        <button type="button" mdbBtn color="info" (click)="mostrarAlert()" mdbWavesEffect>Iniciar Sesion</button>    
+    </div>
 
 </section>

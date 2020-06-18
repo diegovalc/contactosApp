@@ -24,15 +24,19 @@ export class AuthService {
     }) 
     
   }
+  async registerWithMail(email: string, password: string){
+    const result = await this.afAuth.createUserWithEmailAndPassword(email, password);
+    return result;
+  }
 
-  registerWithMail(email: string, password: string) {
+ /*  registerWithMail(email: string, password: string) {
     return new Promise((resolve, reject)=>{
       this.afAuth.createUserWithEmailAndPassword(email, password)
       .then(userData=> resolve(userData),
         err=> reject(err)
       )
     })    
-  }
+  } */
 
   async logOut(){
     try {
@@ -53,6 +57,10 @@ export class AuthService {
 
   loginFacebook(){
     return this.afAuth.signInWithPopup(new auth.FacebookAuthProvider());
+  }
+
+  resetPassword(email: string){
+    return this.afAuth.sendPasswordResetEmail(email);
   }
 
 }

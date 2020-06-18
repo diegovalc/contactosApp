@@ -13,11 +13,13 @@ export class NavbarComponent implements OnInit {
   correoUsuario: string;
   fotoUsuario: string;
 
+  usuario: any;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit(): void {
     this.getLogged();
+    
   }
 
   onLogOut(){
@@ -31,6 +33,8 @@ export class NavbarComponent implements OnInit {
         this.nombreUsuario = user.displayName;
         this.correoUsuario = user.email;
         this.fotoUsuario = user.photoURL;
+        this.usuario= user
+        
       }
     })
   }

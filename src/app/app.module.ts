@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 //mdboostrap module
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -25,6 +26,7 @@ import { ToastrModule } from 'ngx-toastr';
 //Modulo del spinner
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NuevoComponent } from './components/nuevo/nuevo.component';
+import { OlvidoPasswordComponent } from './components/users/olvido-password/olvido-password.component';
 
 
 @NgModule({
@@ -38,6 +40,7 @@ import { NuevoComponent } from './components/nuevo/nuevo.component';
     ContactosComponent,
     Page404Component,
     NuevoComponent,
+    OlvidoPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -48,6 +51,7 @@ import { NuevoComponent } from './components/nuevo/nuevo.component';
     AngularFireAuthModule,
     BrowserAnimationsModule, // required animations module
     NgxSpinnerModule,
+    HttpClientModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-full-width',
       timeOut: 4000,
