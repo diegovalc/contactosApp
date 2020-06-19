@@ -6,6 +6,7 @@ import { User } from 'firebase';
 import { first, map } from 'rxjs/operators'
 import { Observable } from 'rxjs';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -13,7 +14,7 @@ export class AuthService {
 
   public user: User;
 
-  constructor( public afAuth: AngularFireAuth) { }
+  constructor( public afAuth: AngularFireAuth ) { }
 
   loginEmail(email: string, password: string){
     return new Promise((resolve, reject)=>{

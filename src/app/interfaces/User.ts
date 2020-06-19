@@ -1,7 +1,7 @@
-export interface UserI {
-    id?: string;
-    nombre?: string;
-    email?: string;
-    photourl?: string;
-    provider?: string;
+export interface User {
+    idusuario: string;
+    nombre: string;
+    email: string;
+    photourl: string;
+    provider: string;
 }
