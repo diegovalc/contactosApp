@@ -19,6 +19,7 @@ import { Page404Component } from './components/page404/page404.component';
 
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireStorageModule } from '@angular/fire/storage'
 import { environment } from '../environments/environment';
 
 //Modulo de alerts
@@ -52,6 +53,7 @@ import { OlvidoPasswordComponent } from './components/users/olvido-password/olvi
     BrowserAnimationsModule, // required animations module
     NgxSpinnerModule,
     HttpClientModule,
+    AngularFireStorageModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-full-width',
       timeOut: 4000,

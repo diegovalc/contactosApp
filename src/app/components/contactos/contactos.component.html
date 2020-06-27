@@ -1,50 +1,69 @@
 <section id="contactos">
   <div class="container">
-    <div class="row d-flex justify-content-center">
-      <div class="col-md-4 col-sm-6 caja-busqueda">
-        <div class="search-input">
-          <form [formGroup]>
-            <div class="md-form mt-0">
-              <mdb-icon fas icon="search" class="prefix"></mdb-icon>
-              <input
-                mdbInput
-                id="form1"
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Buscar"
-              />
+
+    <div *ngIf="contactos.length>0 else noContactos">
+      <!--Bloque del buscador-->
+      <div class="row d-flex justify-content-center">
+        <div class="col-md-4 col-sm-6 caja-busqueda">
+          <div class="search-input">
+            <form [formGroup]>
+              <div class="md-form mt-0">
+                <mdb-icon fas icon="search" class="prefix"></mdb-icon>
+                <input
+                  mdbInput
+                  id="form1"
+                  class="form-control mr-sm-2"
+                  type="search"
+                  placeholder="Buscar"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div> 
+      <!--Fin del Bloque del buscador-->
+
+      <!--Bloque de los contactos-->
+      <div class="row margen-contactos">
+        <div
+          class="col-md-4 col-sm-6 mb-3"
+          *ngFor="let con of contactos"
+        >
+          <mdb-card class="mdb-color lighten-5">
+            <!--Card image-->
+            <!--<mdb-card-img></mdb-card-img>-->
+            <!--Card content-->
+            <mdb-card-body>
+              <!--Title-->
+              <mdb-card-title>
+                <h4>{{con.nombres}} {{con.apellidos}} <small>({{con.tipo_contacto}})</small></h4>
+              </mdb-card-title>
+  
+              <!--Text-->
+              <mdb-card-text>
+                <p>{{con.descripcion}}</p>
+              </mdb-card-text>
+              
+            </mdb-card-body>
+            <div class="card-footer text-muted text-center">
+              <a mdbBtn color="primary"  size="sm" (click)="mostrarModal(con)" mdbWavesEffect>Ver Detalles</a>
             </div>
-          </form>
+          </mdb-card>
         </div>
       </div>
-    </div>
-    <div class="row cards-contactos">
-      <div
-        class="col-md-4 col-sm-6 mb-3"
-        *ngFor="let con of contactos"
-      >
-        <mdb-card>
-          <!--Card image-->
-          <!--<mdb-card-img></mdb-card-img>-->
-          <!--Card content-->
-          <mdb-card-body>
-            <!--Title-->
-            <mdb-card-title>
-              <h4>{{con.nombres}} {{con.apellidos}} <small>({{con.tipo_contacto}})</small></h4>
-            </mdb-card-title>
+      <!--Fin de Bloque de los contactos-->
 
-            <!--Text-->
-            <mdb-card-text>
-              <p>{{con.descripcion}}</p>
-            </mdb-card-text>
-            
-          </mdb-card-body>
-          <div class="card-footer text-muted text-center">
-            <a mdbBtn color="primary"  size="sm" (click)="mostrarModal(con)" mdbWavesEffect>Ver Detalles</a>
-          </div>
-        </mdb-card>
-      </div>
     </div>
+    <ng-template #noContactos>
+      <div class="row d-flex justify-content-center text-center">
+        <div class="col-md-6 col-sm-6">
+          <h4 class="text-white">No hay contactos en su agenda.</h4>
+          <p class="text-white">¿Desea agregar un contacto?</p>
+          <button type="button" mdbBtn routerLink="/nuevo" color="primary"  class="relative waves-light btn-block" mdbWavesEffect><mdb-icon fas icon="plus" class="mr-1"></mdb-icon>Crear contacto</button>
+        </div>
+        
+      </div>
+    </ng-template >
     
   </div>
   <div mdbModal #contactModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
@@ -59,7 +78,7 @@
         <div class="modal-body">
           <div class="container-fluid ">
             <div class="row justify-content-center">
-              <div class="col-4"><img src="/assets/contacto.png" class="img-fluid" alt="Responsive image"></div>
+              <div class="col-4"><img src="{{contacto.foto}}" class="img-fluid" alt="Responsive image"></div>
               
             </div>
             <div class="row justify-content-center mt-3 text-center">
@@ -77,8 +96,8 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" mdbBtn color="danger" size="sm" class="waves-light" mdbWavesEffect><mdb-icon far icon="trash-alt"></mdb-icon>Borrar</button>
-          <button type="button" mdbBtn color="warning" size="sm" class="relative waves-light" mdbWavesEffect><mdb-icon fas icon="edit"></mdb-icon>Editar</button>
+          <button type="button" mdbBtn (click)="borrarContacto(contacto.idcontacto)" color="danger" size="sm" class="waves-light" mdbWavesEffect><mdb-icon far icon="trash-alt"></mdb-icon>Borrar</button>
+          <button type="button" mdbBtn (click)="editarContacto(contacto.idcontacto)" color="warning" size="sm" class="relative waves-light" mdbWavesEffect><mdb-icon fas icon="edit"></mdb-icon>Editar</button>
         </div>
       </div>
     </div>

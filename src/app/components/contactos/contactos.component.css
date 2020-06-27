@@ -5,7 +5,7 @@
     background-size: cover;  
     background-attachment: fixed; 
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
 } 
 
 .container{
@@ -21,7 +21,7 @@
     box-shadow: 3px 3px 10px 0px rgba(0,0,0,0.48);
 }
 
-.cards-contactos{
+.margen-contactos{
     margin-top: 70px;
 }
 .search-input{

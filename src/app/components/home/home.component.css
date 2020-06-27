@@ -29,6 +29,7 @@ p{
     p{
         font-size: 1rem;
     }
+    
 }
 @media (max-width: 360px) {
     #home h1{
@@ -38,4 +39,9 @@ p{
     p{
         font-size: 1rem;
     }
+    .botones{
+        display: flex;
+        flex-direction: column;
+    }
+    
 }
