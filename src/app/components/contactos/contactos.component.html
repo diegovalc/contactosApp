@@ -66,7 +66,7 @@
     </ng-template >
     
   </div>
-  <div mdbModal #contactModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+  <div style="overflow-y: auto" mdbModal #contactModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -82,7 +82,7 @@
                 <img src="/assets/contacto.png" class="img-fluid" alt="Responsive image">
               </div>
               <ng-template #fotoPerfil>
-                <div class="col-4">
+                <div class="col-8">
                   <img src="{{contacto.foto}}" class="img-fluid" alt="Responsive image">
                 </div>
               </ng-template>

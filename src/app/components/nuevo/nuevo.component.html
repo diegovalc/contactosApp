@@ -126,17 +126,27 @@
                                     
                                 </div>
                                 <!--Foto de contacto-->
-                                <label >Seleccione foto de contacto</label>
-                                <div class="md-form">
+                                <div class="md-form d-flex justify-content-center" *ngIf="edit && contacto.foto">
+                                    <div class="col-4">
+                                        <img src="{{contacto.foto}}" class="img-fluid" alt="Responsive image">
+                                    </div>
+                                </div>
+                                <label *ngIf="!edit">Seleccione foto de contacto</label>
+                                <label *ngIf="edit">Cambiar foto de contacto</label>
+                                <div class="md-form" >
                                     <input type="file" class="form-control-file" accept=".png, .jpg, .jpeg" (change)="preUpload($event)">
                                     
                                 </div>
 
                                 <!-- Sign up button -->
                                 <button mdbBtn color="info" block="true" class="my-4"
-                                    [disabled]="nuevoContactoForm.invalid" (click)="edit ? updateContacto(): onNuevo()">
-                                    Crear contacto
+                                    [disabled]="nuevoContactoForm.invalid" (click)="edit ? onUpdate(): onNuevo()">
+                                    Guardar Contacto
                                 </button>
+                                <button mdbBtn color="warning" block="true" class="my-4" *ngIf="edit" routerLink="/contactos">
+                                    Cancelar
+                                </button>
+                                
                             </form>
                             <!-- Default form register -->
                         </mdb-card-text>

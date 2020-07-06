@@ -84,10 +84,8 @@ export class NuevoComponent implements OnInit {
   onNuevo(){
   
     if (!this.imagen) {
-      this.spinner.show();
       this.contacto = this.nuevoContactoForm.value
       this.contacto.idusuario = this.idusuario;
-      this.spinner.hide();
       this.saveContacto(this.contacto);
   
     }else{
@@ -141,11 +139,42 @@ export class NuevoComponent implements OnInit {
   }
 
 
-  updateContacto(){
+  onUpdate(){
     const id = this.activetedRoute.snapshot.params.id;
     this.contacto = this.nuevoContactoForm.value;
+
+    if (!this.imagen) {
+      this.updateContacto(id, this.contacto);
+      
+    }else{
+      this.spinner.show();
+      const ref = this.storage.ref(this.filePath);
+      const task = this.storage.upload(this.filePath, this.imagen);
+
+      // Va mostrando el porcentaje de la subida
+      task.percentageChanges().subscribe( (porcentaje)=>{
+        this.uploadPercent = Math.round(porcentaje);
+      });
+
+      //al subir la imagen oculta el spinner y guarda en la base de datos la info del contacto
+      task.then(result=>{
+        console.log(result.state);
+        ref.getDownloadURL().subscribe((url)=>{
+          console.log(url);
+          this.contacto = this.nuevoContactoForm.value
+          this.contacto.foto = url;
+          this.spinner.hide();
+          this.updateContacto(id, this.contacto);
+        })
+      });
+      
+    }
     
-    this.dataService.updateContacto(id, this.contacto).subscribe(
+    
+  }
+  
+  updateContacto(id: number, contacto: Contacto){
+    this.dataService.updateContacto(id, contacto).subscribe(
       res=>{
         Swal.fire(
           'Contacto Guardado!',
@@ -162,7 +191,6 @@ export class NuevoComponent implements OnInit {
         
       }
     )
-    
   }
 
   getUserId(){
@@ -177,27 +205,14 @@ export class NuevoComponent implements OnInit {
     this.nombreImagen = Math.random().toString(36).substring(2);
     this.imagen = event.target.files[0];
     this.filePath = `images/${this.nombreImagen}`;
-    /* const ref = this.storage.ref(this.filePath);
-    const task = this.storage.upload(this.filePath, this.imagen);
-    task.percentageChanges().subscribe( (porcentaje)=>{
-      this.uploadPercent = porcentaje;
-      console.log(this.uploadPercent);
-      
-      if (this.uploadPercent == 100) {
-        this.contacto = this.nuevoContactoForm.value
-        console.log('completado',this.contacto);
-        ref.getDownloadURL().subscribe((url)=>{
-          this.urlImagen = url;
-          console.log('url',this.urlImagen);
-          
-        })
-      }
-    }); */
+
   }
 
   saveContacto(contacto: Contacto){
+    this.spinner.show();
     this.dataService.saveContacto(contacto).subscribe(
       res=>{
+        this.spinner.hide();
         console.log(res);
         Swal.fire(
           'Contacto Guardado!',
@@ -214,5 +229,4 @@ export class NuevoComponent implements OnInit {
       }
     ); 
   }
-
 }

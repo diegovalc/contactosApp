@@ -15,11 +15,11 @@
         <li class="nav-item" *ngIf="!isLogged">
           <a class="nav-link waves-light" routerLink="users/register" mdbWavesEffect><mdb-icon fas icon="user-check"></mdb-icon> Registrarse</a>
         </li>
-        <li class="nav-item active" *ngIf="isLogged">
+        <li class="nav-item" routerLinkActive="active"  *ngIf="isLogged">
           <a class="nav-link waves-light" routerLink="nuevo" mdbWavesEffect><mdb-icon fas icon="user-plus"></mdb-icon> Nuevo<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item" *ngIf="isLogged">
-          <a class="nav-link waves-light" routerLink="contactos" mdbWavesEffect><mdb-icon fas icon="address-card"></mdb-icon> Contactos</a>
+        <li class="nav-item" routerLinkActive="active" *ngIf="isLogged">
+          <a class="nav-link waves-light" routerLink="contactos"  mdbWavesEffect><mdb-icon fas icon="address-card"></mdb-icon> Contactos</a>
         </li>
         <li class="nav-item" *ngIf="isLogged && usuario.photoURL">
           <img src="{{usuario.photoURL}}" alt="" class="img-fluid rounded-circle z-depth-0">
