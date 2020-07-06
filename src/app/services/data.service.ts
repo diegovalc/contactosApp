@@ -31,4 +31,12 @@ export class DataService {
     return this.http.delete(`${this.URL}/contactos/${id}`);
   }
 
+  getContacto(id: string){
+    return this.http.get(`${this.URL}/contactos/${id}`);
+  }
+
+  updateContacto(id: number, updatedContacto: Contacto){
+    return this.http.put(`${this.URL}/contactos/${id}`, updatedContacto);
+  }
+
 }

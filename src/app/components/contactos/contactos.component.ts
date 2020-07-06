@@ -1,10 +1,12 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Contacto } from '../../interfaces/Contacto';
 import { DataService } from '../../services/data.service';
+import { FormGroup, FormControl } from '@angular/forms';
 
 import * as moment from 'moment'; //importacion de libreria para calcular fechas
 import { AuthService } from '../../services/auth.service';
 import Swal from 'sweetalert2';
+
 
 moment.locale('es'); //colocar en español la lubreria de momentjs
 
@@ -18,10 +20,16 @@ export class ContactosComponent implements OnInit {
 
   @ViewChild('contactModal', { static: true }) public contactModal;
 
+  /* formBuscar = new FormGroup(
+    textoBuscar: new FormControl
+  )
+ */
   contactos: any=[];
   contacto: Contacto={};
 
   fecha_creacion: string;
+  textoBuscar = '';
+
   constructor(private dataService: DataService, private authService: AuthService) { }
 
   ngOnInit(): void {

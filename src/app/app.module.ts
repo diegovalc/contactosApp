@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 //mdboostrap module
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
@@ -28,6 +29,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { NuevoComponent } from './components/nuevo/nuevo.component';
 import { OlvidoPasswordComponent } from './components/users/olvido-password/olvido-password.component';
+import { BuscarPipe } from './pipes/buscar.pipe';
 
 
 @NgModule({
@@ -42,6 +44,7 @@ import { OlvidoPasswordComponent } from './components/users/olvido-password/olvi
     Page404Component,
     NuevoComponent,
     OlvidoPasswordComponent,
+    BuscarPipe,
   ],
   imports: [
     BrowserModule,
@@ -54,6 +57,7 @@ import { OlvidoPasswordComponent } from './components/users/olvido-password/olvi
     NgxSpinnerModule,
     HttpClientModule,
     AngularFireStorageModule,
+    FormsModule,
     ToastrModule.forRoot({
       positionClass: 'toast-bottom-full-width',
       timeOut: 4000,

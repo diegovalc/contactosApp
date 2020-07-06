@@ -6,18 +6,18 @@
       <div class="row d-flex justify-content-center">
         <div class="col-md-4 col-sm-6 caja-busqueda">
           <div class="search-input">
-            <form [formGroup]>
-              <div class="md-form mt-0">
-                <mdb-icon fas icon="search" class="prefix"></mdb-icon>
-                <input
-                  mdbInput
-                  id="form1"
-                  class="form-control mr-sm-2"
-                  type="search"
-                  placeholder="Buscar"
-                />
-              </div>
-            </form>
+            <div class="md-form mt-0">
+              <mdb-icon fas icon="search" class="prefix"></mdb-icon>
+              <input
+                mdbInput
+                id="form1"
+                class="form-control mr-sm-2"
+                type="search"
+                placeholder="Buscar"
+                name="textoBuscar"
+                [(ngModel)]="textoBuscar"
+              />
+            </div>
           </div>
         </div>
       </div> 
@@ -27,7 +27,7 @@
       <div class="row margen-contactos">
         <div
           class="col-md-4 col-sm-6 mb-3"
-          *ngFor="let con of contactos"
+          *ngFor="let con of contactos | buscar: textoBuscar: 'nombres'"
         >
           <mdb-card class="mdb-color lighten-5">
             <!--Card image-->
@@ -78,13 +78,20 @@
         <div class="modal-body">
           <div class="container-fluid ">
             <div class="row justify-content-center">
-              <div class="col-4"><img src="{{contacto.foto}}" class="img-fluid" alt="Responsive image"></div>
+              <div class="col-4" *ngIf="!contacto.foto; else fotoPerfil">
+                <img src="/assets/contacto.png" class="img-fluid" alt="Responsive image">
+              </div>
+              <ng-template #fotoPerfil>
+                <div class="col-4">
+                  <img src="{{contacto.foto}}" class="img-fluid" alt="Responsive image">
+                </div>
+              </ng-template>
               
             </div>
             <div class="row justify-content-center mt-3 text-center">
               <div class="col">
                 <hr>
-                Telefono: {{contacto.telefono}}
+                Telefono: <span class="font-weight-bold">{{contacto.telefono}}</span>
                 <hr>
                 Email: {{contacto.email}}
                 <hr>
@@ -97,7 +104,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" mdbBtn (click)="borrarContacto(contacto.idcontacto)" color="danger" size="sm" class="waves-light" mdbWavesEffect><mdb-icon far icon="trash-alt"></mdb-icon>Borrar</button>
-          <button type="button" mdbBtn (click)="editarContacto(contacto.idcontacto)" color="warning" size="sm" class="relative waves-light" mdbWavesEffect><mdb-icon fas icon="edit"></mdb-icon>Editar</button>
+          <button type="button" mdbBtn [routerLink]="['/contactos/edit',contacto.idcontacto]" color="warning" size="sm" class="relative waves-light" mdbWavesEffect><mdb-icon fas icon="edit"></mdb-icon>Editar</button>
         </div>
       </div>
     </div>

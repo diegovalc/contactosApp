@@ -134,7 +134,7 @@
 
                                 <!-- Sign up button -->
                                 <button mdbBtn color="info" block="true" class="my-4"
-                                    [disabled]="nuevoContactoForm.invalid" (click)="onNuevo()">
+                                    [disabled]="nuevoContactoForm.invalid" (click)="edit ? updateContacto(): onNuevo()">
                                     Crear contacto
                                 </button>
                             </form>
